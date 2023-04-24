@@ -1,0 +1,33 @@
+main {
+    width: 100%;
+    display: flex;
+    column-gap: 15px;
+}
+
+.albumsContainer {
+    width: 27%;
+}
+
+.albumItem:hover {
+    cursor: pointer;
+}
+
+.albumItem__active {
+    color: rgb(48, 63, 130);
+    text-decoration: underline;
+}
+
+#photosContainer {
+    width: 70%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+.photoItem {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+}

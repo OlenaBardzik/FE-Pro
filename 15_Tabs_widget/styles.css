@@ -1,0 +1,28 @@
+.tabs-nav-btn {
+    margin: 0;
+    padding: 6px 10px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+}
+
+.tabs-nav-btn__active {
+    background-color: #82aee0;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 12px;
+}
+
+.tabs-content-item {
+    display: none;
+    width: 400px;
+    height: 100px;
+    padding: 6px;
+}
+
+.tabs-content-item__active {
+    display: block;
+    background-color: #82aee0;
+    color: #fff;
+}

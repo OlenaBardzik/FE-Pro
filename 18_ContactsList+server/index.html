@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact list simple</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./contactsAPI.js" defer></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <form id="formId">
+        <input id="id" type="text" style="display: none;">
+        <input type="text" id="nameInput" placeholder="Name">
+        <input type="text" id="surnameInput" placeholder="Surname">
+        <input type="text" id="phoneInput" placeholder="Phone">
+        <button type="submit">Save Contact</button>
+    </form>
+    <br>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</body>
+</html>

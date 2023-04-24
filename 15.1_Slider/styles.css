@@ -1,0 +1,14 @@
+.slider-img {
+    width: 500px;
+    height: 350px;
+    display: none;
+}
+
+.slider-img:hover {
+    cursor: pointer;
+}
+
+.slider-img__active {
+    display: block;
+}
+

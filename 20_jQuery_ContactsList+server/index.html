@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact list simple</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="./ContactsAPI.js" defer></script>
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <form id="formId">
+        <input id="id" type="text" style="display: none;">
+        <input type="text" id="firstName" placeholder="Name">
+        <input type="text" id="lastName" placeholder="Surname">
+        <input type="text" id="phone" placeholder="Phone">
+        <button type="submit">Save Contact</button>
+    </form>
+    <br>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</body>
+</html>
