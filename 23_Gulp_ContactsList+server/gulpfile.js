@@ -44,7 +44,7 @@ function copyJsTask () {
 }
 
 function copyCssTask () {
-    return src("./src/**/*.css")
+    return src(path.cssSrc)
         .pipe(concat(path.destCss))
         .pipe(dest(path.dest))
 }
