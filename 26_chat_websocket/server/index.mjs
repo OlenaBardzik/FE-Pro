@@ -1,6 +1,6 @@
 import WebSocket, { WebSocketServer } from 'ws';
 
-const PORT = 8080;
+const PORT = 8000;
 const wss = new WebSocketServer({ port: PORT });
 
 wss.on('connection', function connection(ws) {

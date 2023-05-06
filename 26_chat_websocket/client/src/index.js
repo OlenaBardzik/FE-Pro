@@ -1,3 +1,6 @@
+import "./style.css";
+import { ChatSocket } from "./ChatSocket";
+
 const SELECTOR_FORM = "#form";
 const SELECTOR_MSG_CONTAINER = "#messageContainer";
 
@@ -13,11 +16,12 @@ function onFormSubmit (event) {
 
     const formData = getFormData();
 
-    chatSocket.send(formData);
+    if (isDataValid(formData)) {
+        chatSocket.send(formData);
+    }
 }
 
-function onMessage (event) {
-    let data = JSON.parse(event.data);
+function onMessage (data) {
     messageContainer.insertAdjacentHTML("beforeend", generateTemplateHtml(data));
     clearForm();
 }
@@ -31,6 +35,10 @@ function getFormData () {
         name: form.userName.value,
         message: form.message.value
     }
+}
+
+function isDataValid(formData) {
+    return formData.name.trim().length !== 0 && formData.message.trim().length !== 0
 }
 
 function generateTemplateHtml (data) {
