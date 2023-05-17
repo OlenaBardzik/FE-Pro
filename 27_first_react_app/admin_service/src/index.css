@@ -1,0 +1,51 @@
+.app {
+  display: flex;
+}
+
+.content {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 20px;
+}
+
+.menu-list-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-content {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 2%;
+}
+
+.main-list-item {
+  width: 49%;
+  height: 80px;
+  border-radius: 8px;
+  box-shadow: 0 10px 10px rgba( 0, 0, 0, .2);
+}
+
+.main-list-item:last-child {
+  width: 100%;
+}
