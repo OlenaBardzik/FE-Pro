@@ -1,9 +1,9 @@
 export default function ContactListItem ({contact, onContactRemove, onContactEdit}) {
-    function onDeleteBtnClick () {
+    const onDeleteBtnClick = () => {
         onContactRemove(contact.id)
     }
 
-    function onEditBtnClick () {
+    const onEditBtnClick = () => {
         onContactEdit(contact)
     }
 

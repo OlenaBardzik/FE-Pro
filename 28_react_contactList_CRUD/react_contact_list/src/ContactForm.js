@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ContactFormInput from "./ContactFormInput";
 
 export default function ContactForm ({ onFormSubmit, contactEdit }) {
     const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ export default function ContactForm ({ onFormSubmit, contactEdit }) {
         setFormData(contactEdit)
     }, [contactEdit])
 
-    function onSubmit (event) {
+    const onSubmit = (event) => {
         event.preventDefault();
 
         const contact = {
@@ -26,21 +27,18 @@ export default function ContactForm ({ onFormSubmit, contactEdit }) {
 
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" 
-                   id="nameInput" 
-                   placeholder="First Name" 
-                   value={formData.firstName} 
-                   onChange={(event) => {setFormData({...formData, firstName: event.target.value})}}/>
-            <input type="text" 
-                   id="lastnameInput" 
-                   placeholder="Last Name" 
-                   value={formData.lastName} 
-                   onChange={(event) => {setFormData({...formData, lastName: event.target.value})}}/>
-            <input type="text" 
-                   id="phoneInput" 
-                   placeholder="Phone" 
-                   value={formData.phone} 
-                   onChange={(event) => {setFormData({...formData, phone: event.target.value})}}/>
+            <ContactFormInput type="text" 
+                        placeholder="First Name" 
+                        value={formData.firstName} 
+                        onChange={(event) => {setFormData({...formData, firstName: event.target.value})}}/>
+            <ContactFormInput type="text" 
+                        placeholder="Last Name" 
+                        value={formData.lastName} 
+                        onChange={(event) => {setFormData({...formData, lastName: event.target.value})}}/>
+            <ContactFormInput type="text" 
+                        placeholder="Phone" 
+                        value={formData.phone} 
+                        onChange={(event) => {setFormData({...formData, phone: event.target.value})}}/>
             <button type="submit">Save Contact</button>
         </form>
     )

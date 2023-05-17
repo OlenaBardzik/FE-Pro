@@ -1,34 +1,14 @@
 import { useState } from 'react';
 import ContactForm from "./ContactForm";
-import ContactList from "./ContactList";
+import ContactTable from "./ContactTable";
+import { primaryList } from './data';
 
-const primaryList = [{
-  id: '1',
-  firstName: 'Talylor',
-  lastName: 'Smith',
-  phone: 123456789
-}, {
-  id: '2',
-  firstName: 'Barbara',
-  lastName: 'Adams',
-  phone: 987654321
-}, {
-  id: '3',
-  firstName: 'Tony',
-  lastName: 'Paulson',
-  phone: 132465879
-}, {
-  id: '4',
-  firstName: 'Dee',
-  lastName: 'Townsend',
-  phone: 543219876
-}]
 
 function App() {
   const [list, setList] = useState(primaryList);
   const [contactEdit, setContactEdit] = useState({});
 
-  function onFormSubmit (contact) {
+  const onFormSubmit = (contact) => {
     if (!isContactValid(contact)) {
       showError("Data is not valid");
       return;
@@ -50,23 +30,23 @@ function App() {
     setContactEdit({});
   }
 
-  function onContactRemove (id) {
+  const onContactRemove = (id) => {
     const newList = list.filter(contact => contact.id !== id);
 
     setList(newList);
   }
 
-  function onContactEdit (contact) {
+  const onContactEdit = (contact) => {
     setContactEdit(contact)
   }
 
-  function isContactValid(contact) {
+  const isContactValid = (contact) => {
     return contact.firstName?.trim().length > 0 &&
       contact.lastName?.trim().length > 0 &&
       contact.phone?.toString().length > 0
   }
 
-  function showError(error) {
+  const showError = (error) => {
     alert(error)
   }
 
@@ -76,7 +56,7 @@ function App() {
         onFormSubmit={onFormSubmit}
         contactEdit={contactEdit}
       />
-      <ContactList 
+      <ContactTable 
         list={list}
         onContactRemove={onContactRemove}
         onContactEdit={onContactEdit}
