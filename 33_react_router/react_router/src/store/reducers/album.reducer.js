@@ -1,7 +1,8 @@
-import {SET_ALBUM_LIST} from '../actions/album.actions';
+import {SET_ALBUM_LIST, SET_ALBUM} from '../actions/album.actions';
 
 const initialState = {
-    albums: []
+    albums: [],
+    album: null
  }
 
 export default function albumReducer(state = initialState, { type, payload }) {

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet, useParams, useNavigate } from 'react-router-dom';
 import AlbumListItem from './AlbumListItem';
-import { fetchAlbums, setAlbums, setAlbum } from '../store/actions/album.actions';
-import { setUser } from '../store/actions/user.actions';
-import { setPhotos } from '../store/actions/photo.actions';
+import { fetchAlbums, setAlbums } from '../../store/actions/album.actions';
+import { setUser } from '../../store/actions/user.actions';
+import { setPhotos } from '../../store/actions/photo.actions';
 
 export default function AlbumList () {
     let { userId, albumId } = useParams();
@@ -23,18 +23,21 @@ export default function AlbumList () {
     }
 
     return  (
-        <>
-            <div>Albums</div>
+        <div className='wrapper'>
             <div>
-                {albums.map(album => (
-                    <AlbumListItem
-                        key={album.id}
-                        album={album}
-                        onClickAlbum={() => onClickAlbum(album)}
-                    />
-                ))}
+                <div className='album-title'>Albums</div>
+                <ul className='album-list'>  
+                    {albums.map(album => (
+                        <AlbumListItem
+                            key={album.id}
+                            album={album}
+                            isActive={album.id == albumId}
+                            onClickAlbum={() => onClickAlbum(album)}
+                        />
+                    ))}
+                </ul>
             </div>
             <Outlet />
-        </>
+        </div>
     )
 }

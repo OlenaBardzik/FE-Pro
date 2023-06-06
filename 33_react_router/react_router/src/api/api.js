@@ -25,29 +25,15 @@ export class AppApi {
             })
     }
 
-    static getUser (userId) {
-        return AppApi.request(`users/${userId}`)
-            .catch(() => {
-                throw new Error ("Cann't get user");
-            })
-    }
-
     static getAllbums (userId) {
-        return AppApi.request(`users/${userId}/albums`)
+        return AppApi.request(`albums/?userId=${userId}`)
             .catch(() => {
                 throw new Error ("Cann't get albums");
             })
     }
 
-    static getAllbum (userId, albumId) {
-        return AppApi.request(`users/${userId}/albums/${albumId}`)
-            .catch(() => {
-                throw new Error ("Cann't get album");
-            })
-    }
-
     static getPhotos (albumId) {
-        return AppApi.request(`albums/${albumId}/photos`)
+        return AppApi.request(`photos/?albumId=${albumId}`)
             .catch(() => {
                 throw new Error ("Cann't get albums");
             })

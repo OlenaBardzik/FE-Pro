@@ -1,8 +1,8 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import AlbumList from "./features/AlbumsList.js";
-import UserList from "./features/UserList.js";
-import PhotoList from './features/PhotoList.js';
+import AlbumList from "./features/Album/AlbumsList.js";
+import UserList from "./features/User/UserList.js";
+import PhotoList from './features/Photo/PhotoList.js';
 
 function App() {
   return (
