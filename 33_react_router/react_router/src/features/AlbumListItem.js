@@ -2,11 +2,13 @@ import { NavLink } from 'react-router-dom';
 
 export default function AlbumListItem ({album, onClickAlbum}) {
 
+const onAlbumClick = () => {
+    onClickAlbum();
+}
+
     return (
-        <div onClick={onClickAlbum}>
-            <NavLink to='/photos'>
+        <div onClick={onAlbumClick}>
                 {album.title}
-            </NavLink>
         </div>
     )
 }

@@ -8,9 +8,7 @@ export default function UserListItem ({user, onUserSelect}) {
 
     return (
         <li onClick={onUserClick}>
-            <NavLink to='/albums'>
                 {user.username}
-            </NavLink>
         </li>
     )
 }
