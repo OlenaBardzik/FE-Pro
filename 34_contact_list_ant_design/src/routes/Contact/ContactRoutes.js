@@ -5,10 +5,11 @@ import ContactForm from './ContactForm';
 
 export default function ContactRoutes() {
     return (
-        <>
-            <ContactForm />
-            <ContactTable />
-        </>
-        
+        <Routes>
+            <Route path='/' element={<ContactTable />} />
+            <Route path='/create' element={<ContactForm />} />
+            <Route path='/:id/edit' element={<ContactForm />} />
+            <Route path='/*' element={<NotFound />} />
+        </Routes>  
     )
   }

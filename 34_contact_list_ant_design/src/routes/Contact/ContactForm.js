@@ -1,74 +1,97 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { saveContact, setContactToEdit } from '../../store/actions/contactAction';
-import {DEFAULT_CONTACT} from '../../store/reducers/contactReducer';
+import { useNavigate } from 'react-router-dom';
+import { Button, Form, Input } from 'antd';
 
-const PHONE_TEMPLATE = /^\d{3}(-\d{2}){2}$/
-const validationSchema = Yup.object({
-  firstName: Yup.string()
-    .min(2, 'First name must be >= 3 symbols')
-    .required('Required'),
-  lastName: Yup.string()
-    .min(2, 'Last name must be >= 3 symbols')
-    .required('Required'),
-  phone: Yup.string()
-    .matches(PHONE_TEMPLATE, 'The phone must match the template xxx-xx-xx')
-    .required('Required'),
-});
+import { saveContact, setContactToEdit } from '../../store/actions/contactAction';
+
+const PHONE_TEMPLATE = /^\d{3}(-\d{2}){2}$/;
 
 export default function ContactForm () {
-    const contactToEdit = useSelector(state => state.contact.contactToEdit);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const contactToEdit = useSelector(state => state.contact.contactToEdit);
 
-    const onSubmit = (values, actions) => {
+    const onSubmit = (value) => {
 
         const contact = {
             ... contactToEdit,
-            firstName: values.firstName,
-            lastName: values.lastName,
-            phone: values.phone
+            firstName: value.firstName,
+            lastName: value.lastName,
+            phone: value.phone
         }
       
-        dispatch(saveContact(contact))
-        dispatch(setContactToEdit({}))
-        actions.resetForm({values: DEFAULT_CONTACT});
+        dispatch(saveContact(contact));
+        dispatch(setContactToEdit({}));
+        navigate('/contact');
     }
 
     return (
-        <Formik
-            enableReinitialize
+        <Form 
             initialValues={contactToEdit}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}>
-                {props => (
-                    <form onSubmit={props.handleSubmit} onReset={props.handleReset}>
-                        <div>
-                            <input type="text" 
-                                    placeholder="First Name" 
-                                    name="firstName"
-                                    value={props.values.firstName}
-                                    onChange={props.handleChange}/>
-                            
-                            <input type="text" 
-                                    placeholder="Last Name" 
-                                    name="lastName"
-                                    value={props.values.lastName}
-                                    onChange={props.handleChange}/>
-                            <input type="text" 
-                                placeholder="Phone" 
-                                name="phone"
-                                value={props.values.phone}
-                                onChange={props.handleChange}/>
-                            <button type="submit">Save Contact</button>
-                        </div>
-                        <div>
-                            <ErrorMessage name="firstName" component='div'/>
-                            <ErrorMessage name="lastName" component='div'/>
-                            <ErrorMessage name="phone" component='div'/>
-                        </div>
-                    </form>
-                )}
-        </Formik>
+            onFinish={onSubmit}
+            autoComplete="off" 
+            labelCol={{
+                span: 8,
+            }}
+            wrapperCol={{
+                span: 10,
+            }}
+        >
+                <Form.Item
+                    label="First Name"
+                    name="firstName"
+                    rules={[
+                        {
+                            min: 3,
+                            message: 'Must be >= 3 symbols',
+                        }, {
+                            required: true,
+                            message: 'Please input your First Name!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Last Name"
+                    name="lastName"
+                    rules={[
+                        {
+                            min: 3,
+                            message: 'Must be >= 3 symbols',
+                        }, {
+                            required: true,
+                            message: 'Please input your Last Name!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Phone"
+                    name="phone"
+                    rules={[
+                        {
+                            pattern: PHONE_TEMPLATE,
+                            message: 'The phone must match the template xxx-xx-xx',
+                        }, {
+                            required: true,
+                            message: 'Please input your Phone!',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                wrapperCol={{
+                    offset: 8,
+                    span: 10,
+                  }}
+                >
+                    <Button type="primary" htmlType="submit">
+                        Submit
+                    </Button>
+                </Form.Item>
+        </Form>
     )
 }
